@@ -33,7 +33,7 @@ public class MyQueue<T extends Comparable<T>> implements Queue<T> {
     @Override
     public T dequeue() {
         if (empty())
-            throw new IndexOutOfBoundsException("Stack is empty!");
+            throw new IndexOutOfBoundsException("Queue is empty!");
         return queue.remove(0);
     }
 }
