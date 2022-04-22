@@ -29,7 +29,7 @@ public class MaxHeap<T extends Comparable<T>> implements MyHeap<T> {
     @Override
     public boolean remove(T item) {
         for (int i = 0; i < heap.size(); i++) {
-            if (heap.get(i) == item) {
+            if (heap.get(i).equals(item)) {
                 heap.swap(i, heap.size() - 1);
                 heap.remove(heap.size() - 1);
                 heapify();
