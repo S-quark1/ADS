@@ -33,7 +33,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
     @Override
     public boolean remove(T item) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == item) {
+            if (arr[i].equals(item)) {
                 remove(i);
                 return true;
             }
@@ -78,7 +78,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
     public int indexOf(Object o) {
 //        if (!contains(o)) return -1;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == o) return i;
+            if (arr[i].equals(o)) return i;
         }
         return -1;
     }
@@ -86,7 +86,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
     @Override
     public int lastIndexOf(Object o) {
         for (int i = length - 1; i >= 0; i--) {
-            if (arr[i] == o) return i;
+            if (arr[i].equals(o)) return i;
         }
         return -1;
     }
@@ -120,7 +120,7 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
     @Override
     public boolean contains(Object o) {
         for (Object value : arr) {
-            if (value == o) return true;
+            if (value.equals(o)) return true;
         }
         return false;
     }

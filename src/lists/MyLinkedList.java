@@ -133,7 +133,7 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
     public int indexOf(Object o) {
         MyNode<T> temp = head;
         for (int i = 0; i < length; i++) {
-            if (temp.data == o) return i;
+            if (temp.data.equals(o)) return i;
             temp = temp.next;
         }
         return -1;
@@ -143,7 +143,7 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
     public int lastIndexOf(Object o) {
         MyNode<T> temp = tail;
         for (int i = length - 1; i > 0; i--) {
-            if (temp.data == o) return i;
+            if (temp.data.equals(o)) return i;
             temp = temp.prev;
         }
         return -1;
@@ -181,7 +181,7 @@ public class MyLinkedList<T extends Comparable<T>> implements MyList<T> {
     public boolean contains(Object o) {
         MyNode<T> temp = head;
         for (int i = 0; i < length; i++) {
-            if (temp.data == o) return true;
+            if (temp.data.equals(o)) return true;
             temp = temp.next;
         }
         return false;
