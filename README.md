@@ -1,1 +1,1 @@
-# everything is in src
+# - checkout src
