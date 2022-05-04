@@ -1,6 +1,6 @@
 package queue;
 
-public interface Queue<T> {
+public interface Queue<T> { // FIFO
     boolean empty();
     int size();
     T peek();
