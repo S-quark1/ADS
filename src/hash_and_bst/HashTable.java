@@ -18,21 +18,31 @@ public class HashTable<K, V> {
     }
 
     private HashNode<K, V>[] chainArray; // or Object[]
-    private int M = 11; // default number of chains
-    private int size;
+    private int _capacity = 11; // default number of chains
+    private int _length = 0;
+    private float _loadFactor = 0.75F;
 
     public HashTable() {
-
+        chainArray = new HashNode[_capacity];
     }
 
     public HashTable(int M) {
+        _capacity = (int) (M * _loadFactor);
+        chainArray = new HashNode[_capacity];
     }
 
     private int hash(K key) {
-        return 0;
+        return ((key.hashCode() & 0x7FFFFFFF) % _capacity);
     }
 
     public void put(K key, V value) {
+        HashNode<K,V> node = new HashNode<>(key, value);
+        int index = hash(key);
+        if (chainArray[index] != null) {
+            node.next = chainArray[index];
+        }
+        chainArray[index] = node;
+        _length++;
     }
 
     public V get(K key) {

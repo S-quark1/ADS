@@ -1,17 +1,17 @@
 package db;
 
-public class User {
+public class Student {
     private int id;
     private String name;
     private String surname;
 
-    public User(){}
-    public User(String name, String surname) {
+    public Student(){}
+    public Student(String name, String surname) {
         setName(name);
         setSurname(surname);
     }
 
-    public User(int id, String name, String surname) {
+    public Student(int id, String name, String surname) {
         setId(id);
         setName(name);
         setSurname(surname);
