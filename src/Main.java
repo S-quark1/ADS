@@ -1,5 +1,7 @@
 import hash_and_bst.BST;
 
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         BST<Integer, Integer> bst = new BST<>();
@@ -11,6 +13,9 @@ public class Main {
         bst.put(0,0);
         bst.put(3,3);
         bst.put(6,6);
+        for (Integer element : bst) {
+            System.out.print(element + " ");
+        }
         bst.iterator();
         System.out.println("\nooo"+ bst.getNode(4));
 //        System.out.print(bst.getNode(5));

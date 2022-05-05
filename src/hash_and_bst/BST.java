@@ -1,6 +1,9 @@
 package hash_and_bst;
+import queue.MyQueue;
 
-public class BST<K extends Comparable<K>, V> {
+import java.util.Iterator;
+
+public class BST<K extends Comparable<K>, V> implements Iterable<K>{
     private Node root;
 
     private class Node {
@@ -114,16 +117,17 @@ public class BST<K extends Comparable<K>, V> {
         return parent;
     }
 
-    public void iterator() {
-//        MyQueue<K> q = new MyQueue<>();
-        inOrder(root);
-//        return q;
+    public Iterator<K> iterator() {
+        MyQueue<K> q = new MyQueue<>();
+        inOrder(root, q);
+        return (Iterator<K>) q;
     }
 
-    private void inOrder(Node x) {
+    private void inOrder(Node x, MyQueue<K> q) {
         if (x == null) return;
-        inOrder(x.left);
-        System.out.print(x.key + " ");
-        inOrder(x.right);
+        inOrder(x.left, q);
+        q.enqueue(x.key);
+//        System.out.print(x.key + " ");
+        inOrder(x.right, q);
     }
 }

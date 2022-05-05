@@ -22,6 +22,7 @@ public class HashTable<K, V> {
     private int size;
 
     public HashTable() {
+
     }
 
     public HashTable(int M) {
