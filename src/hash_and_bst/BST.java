@@ -82,6 +82,7 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K>{
     }
 
     // this stuff doesn't work
+    // let it be here
     private Node deleteYT(Node node, K key) {
         if (node == null) return null;
         if (key.compareTo(node.key) <= 0) node.left = deleteYT(node.left, key);
