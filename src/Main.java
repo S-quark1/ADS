@@ -1,6 +1,7 @@
 import db.StudentDB;
 import db.Student;
 import db.StudentRepos;
+import hash_and_bst.BST;
 import hash_and_bst.HashTable;
 
 import java.util.List;
@@ -13,6 +14,16 @@ public class Main {
         HashTable<Integer, Student> table = new HashTable<>();
         for (Student student: students) {
             table.put(student.getId(), student);
+//            System.out.println(table.get(student.getId()));
+        }
+        table.remove(3);
+        for (Student student: students) {
+            System.out.println(table.get(student.getId()));
+        }
+        System.out.println(table.getKey(students.get(4)));
+        // getKey doesn't work
+//        System.out.println(table.contains(students.get(4)));
+        for (Student student: students) {
             System.out.println(table.get(student.getId()));
         }
 //        BST<Integer, Integer> bst = new BST<>();
@@ -27,11 +38,13 @@ public class Main {
 //        for (Integer element : bst) {
 //            System.out.print(element + " ");
 //        }
-//        bst.iterator();
-//        System.out.println("\nooo"+ bst.getNode(4));
+//        System.out.println();
+//        System.out.println("4th node has value: "+ bst.getNode(4));
 ////        System.out.print(bst.getNode(5));
 //        bst.delete(3);
+//        for (Integer element : bst) {
+//            System.out.print(element + " ");
+//        }
 //        System.out.println();
-//        bst.iterator();
     }
 }

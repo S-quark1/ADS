@@ -65,7 +65,7 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K>{
         else {
             Node y = findMin(z.right);
             Node yParent = findMinParent(y, z.right);
-            if (yParent != z) {
+            if (!yParent.equals(z)) {
                 Transplant(y, y.right, yParent);
                 y.right = z.right;
             }
@@ -77,7 +77,7 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K>{
 
     private void Transplant(Node u, Node v, Node uParent) {
         if (uParent == null) root = v;
-        else if (u == uParent.left) uParent.left = v;
+        else if (u.equals(uParent.left)) uParent.left = v;
         else uParent.right = v;
     }
 
@@ -114,7 +114,7 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K>{
 
     private Node findMinParent(Node node, Node parent) {
         while (parent.left != null) {
-            if (parent.left == node) break;
+            if (parent.left.equals(node)) break;
             parent = parent.left;
         }
         return parent;
