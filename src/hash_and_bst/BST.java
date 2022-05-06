@@ -2,6 +2,8 @@ package hash_and_bst;
 import queue.MyQueue;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BST<K extends Comparable<K>, V> implements Iterable<K>{
     private Node root;
@@ -118,16 +120,15 @@ public class BST<K extends Comparable<K>, V> implements Iterable<K>{
     }
 
     public Iterator<K> iterator() {
-        MyQueue<K> q = new MyQueue<>();
+        Queue<K> q = new LinkedList<>();
         inOrder(root, q);
-        return (Iterator<K>) q;
+        return q.iterator();
     }
 
-    private void inOrder(Node x, MyQueue<K> q) {
+    private void inOrder(Node x, Queue<K> q) {
         if (x == null) return;
         inOrder(x.left, q);
-        q.enqueue(x.key);
-//        System.out.print(x.key + " ");
+        q.add(x.key);
         inOrder(x.right, q);
     }
 }
