@@ -16,13 +16,19 @@ public class Main {
             table.put(student.getId(), student);
 //            System.out.println(table.get(student.getId()));
         }
+        System.out.println("*******************");
+        for (Student student: students) {
+            System.out.println(table.get(student.getId()));
+        }
+        System.out.println("*******************");
         table.remove(3);
         for (Student student: students) {
             System.out.println(table.get(student.getId()));
         }
-        System.out.println(table.getKey(students.get(4)));
+        System.out.println("*******************");
+//        System.out.println(table.getKey(students.get(7)));
         // getKey doesn't work
-//        System.out.println(table.contains(students.get(4)));
+        System.out.println(table.contains(students.get(4)));
         for (Student student: students) {
             System.out.println(table.get(student.getId()));
         }

@@ -18,7 +18,7 @@ public class HashTable<K, V> {
     }
 
     private HashNode<K, V>[] buckets; // |X| |X| |X| |X| |X| = these are buckets and X is a pointer to chain
-    private int _tableSize = 11; // default number of buckets
+    private int _tableSize = 3; // default number of buckets
     private int _length = 0; // number of el. in a bucket ( let's call it a chain)
     private float _loadFactor = 0.75F;
     private float _loadStart = 0.65F;
@@ -49,28 +49,29 @@ public class HashTable<K, V> {
     }
 
     private void resize() {
-        int _newTableSize = (int) (_length / _loadStart);
-        HashNode<K, V>[] newBuckets = new HashNode[_newTableSize];
-        for (int i = 0; i < _tableSize; i++) {
+        int _oldTableSize = _tableSize;
+        int _tableSize = (int) (_length / _loadStart);
+        HashNode<K, V>[] newBuckets = new HashNode[_tableSize];
+        for (int i = 0; i < _oldTableSize; i++) {
             while (buckets[i] != null) {
                 HashNode<K, V> node = new HashNode<>(buckets[i].key, buckets[i].value);
                 int index = hash(node.key);
                 if (newBuckets[index] != null) {
                     node.next = newBuckets[index];
                 }
-                buckets[index] = node;
+                newBuckets[index] = node;
                 buckets[i] = buckets[i].next;
             }
         }
         buckets = newBuckets;
-        _tableSize = _newTableSize;
     }
 
     public V get(K key) {
         int keyIndex = hash(key);
-        while (buckets[keyIndex] != null) {
-            if (buckets[keyIndex].key.equals(key)) return buckets[keyIndex].value;
-            buckets[keyIndex] = buckets[keyIndex].next;
+        HashNode<K, V> head = buckets[keyIndex];
+        while (head != null) {
+            if (head.key.equals(key)) return head.value;
+            head = head.next;
         }
         return null;
     }
@@ -105,12 +106,12 @@ public class HashTable<K, V> {
 
     public K getKey(V value) {
         for (int i = 0; i < _tableSize; i++) {
-            while (buckets[i] != null) {
-                if (buckets[i].value.equals(value)) {
-                    System.out.println("I found: "+buckets[i].value);
-                    return buckets[i].key;
+            HashNode<K, V> head = buckets[i];
+            while (head != null) {
+                if (head.value.equals(value)) {
+                    return head.key;
                 }
-                buckets[i] = buckets[i].next;
+                head = head.next;
             }
         }
         return null;
